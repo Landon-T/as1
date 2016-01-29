@@ -1,11 +1,32 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainLog">
+<?xml version="1.0" enconding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+
+    <TextView
+        android:id="@+id/LogsTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Log Entries"
+        android:textSize="20dp"/>
+    <ListView
+        android:id="@+id/LogEntryList"
+        android:layout_width="fill_parent"
+        android:layout_height="263dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        ></ListView>
+    <Button
+        android:id="@+id/AddEntry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Add"
+        />
+    <Button
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
-</RelativeLayout>
+
+</LinearLayout>
