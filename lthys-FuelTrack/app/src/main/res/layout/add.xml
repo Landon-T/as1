@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/addmessage"
+        android:textSize="20dp"
+        />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/enterDate"
+        android:hint="Please Enter the Date- YYYY-MM-DD"
+        android:inputType="date"
+        />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/enterStation"
+        android:hint="Please Enter the Location"
+        />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/enterOdometer"
+        android:hint="Please Enter the Odometer Reading"
+        />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/enterGrade"
+        android:hint="Please Enter the Fuel Grade"
+        />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/enterAmount"
+        android:hint="Enter the Fuel Amount"
+        android:inputType="number"
+        />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/enterCost"
+        android:hint="Please Enter the Cost/Litre"
+        android:inputType="numberDecimal"/>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/finishButton"
+        android:text="Finish"
+        />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancelButton"
+        android:text="Cancel"
+        />
+</LinearLayout>

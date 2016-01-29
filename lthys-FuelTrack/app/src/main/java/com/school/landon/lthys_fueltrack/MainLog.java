@@ -4,16 +4,40 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 public class MainLog extends ActionBarActivity {
+    private static final String FILENAME = "LogEntries.sav";
+    private ListView EntriesList;
+    private ArrayList<LogEntry> logEntries= new ArrayList<LogEntry>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_log);
+
+        Button addEntry = (Button) findViewById(R.id.AddEntry);
+
+        addEntry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setResult(RESULT_OK);
+                //go to add screen
+            }
+        });
     }
 
+    protected void onStart(){
+        super.onStart();
+        //loadFromfile();
+        //adapter = new ArrayAdapter<Entry>()
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
