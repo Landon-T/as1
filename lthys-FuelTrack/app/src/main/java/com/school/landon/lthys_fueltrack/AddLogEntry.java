@@ -10,14 +10,32 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class AddLogEntry extends ActionBarActivity {
-
+    private static final String FILENAME = "LogEntries.sav";
+    private Date tmpDate;
+    private String tmpStation;
+    private Integer tmpOdometer;
+    private String tmpGrade;
+    private Integer tmpAmount;
+    private Integer tmpCost;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_log_entry);
+
+        EditText dateText = (EditText) findViewById(R.id.enterDate);
+        EditText stationText = (EditText) findViewById(R.id.enterStation);
+        EditText odometerText = (EditText) findViewById(R.id.enterOdometer);
+        EditText gradeText = (EditText) findViewById(R.id.enterGrade);
+        EditText amountText = (EditText) findViewById(R.id.enterAmount);
+        EditText costText = (EditText) findViewById(R.id.enterCost);
 
         Button cancel  =  (Button) findViewById(R.id.cancelButton);
         Button finish = (Button) findViewById(R.id.finishButton);
@@ -25,7 +43,30 @@ public class AddLogEntry extends ActionBarActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+                String tempString = dateText.getText().toString();
+                try {
+                    tmpDate = dateFormat.parse(tempString);
+                }catch(ParseException e){}
+
+                tmpStation = stationText.getText().toString();
+
+                String tempodo = odometerText.getText().toString();
+                tmpOdometer = Integer.parseInt(tempodo);
+
+                tmpGrade = gradeText.getText().toString();
+
+                String tempamount = amountText.getText().toString();
+                tmpAmount = Integer.parseInt(tempamount);
+
+                String tempcost = costText.getText().toString();
+                tmpCost = Integer.parseInt(tempcost);
+
+                LogEntry entry = new LogEntry(tmpDate,tmpStation,tmpOdometer,tmpGrade,tmpAmount,tmpCost);
+
+
+
             }
         });
 /*
