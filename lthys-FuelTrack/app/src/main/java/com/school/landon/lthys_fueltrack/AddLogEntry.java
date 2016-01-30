@@ -1,52 +1,44 @@
 package com.school.landon.lthys_fueltrack;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
-
-import java.util.ArrayList;
 
 
-public class MainLog extends ActionBarActivity {
-    private Integer REQUEST_CODE = 123;
-    private static final String FILENAME = "LogEntries.sav";
-    private ListView EntriesList;
-    private ArrayList<LogEntry> logEntries= new ArrayList<LogEntry>();
+public class AddLogEntry extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_log);
+        setContentView(R.layout.activity_add_log_entry);
 
-        Button addEntry = (Button) findViewById(R.id.AddEntry);
+        Button cancel  =  (Button) findViewById(R.id.cancelButton);
+        Button finish = (Button) findViewById(R.id.finishButton);
 
-        addEntry.setOnClickListener(new View.OnClickListener() {
+        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //setResult(RESULT_OK);
-                Intent intent = new Intent(v.getContext(), AddLogEntry.class);
-                startActivityForResult(intent, REQUEST_CODE);
-
-                //go to add screen
+                
             }
         });
+/*
+        if (savedInstanceState == null){
+            getSupportFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
+        }
+*/
     }
 
-    protected void onStart(){
-        super.onStart();
-        //loadFromfile();
-        //adapter = new ArrayAdapter<Entry>()
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_log, menu);
+        getMenuInflater().inflate(R.menu.menu_add_log_entry, menu);
         return true;
     }
 
@@ -64,4 +56,11 @@ public class MainLog extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    Intent intent = getIntent();
+
+
+
+
+
 }
