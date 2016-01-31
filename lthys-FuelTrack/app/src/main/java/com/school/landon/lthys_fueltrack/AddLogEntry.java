@@ -12,30 +12,42 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 
 public class AddLogEntry extends ActionBarActivity {
     private static final String FILENAME = "LogEntries.sav";
-    private Date tmpDate;
-    private String tmpStation;
-    private Integer tmpOdometer;
-    private String tmpGrade;
-    private Integer tmpAmount;
-    private Integer tmpCost;
+    private ArrayList<LogEntry> loglist = new ArrayList<LogEntry>();
+
+    private EditText dateText;
+    private EditText stationText;
+    private EditText odometerText;
+    private EditText gradeText;
+    private EditText amountText;
+    private EditText costText;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_log_entry);
 
-        EditText dateText = (EditText) findViewById(R.id.enterDate);
-        EditText stationText = (EditText) findViewById(R.id.enterStation);
-        EditText odometerText = (EditText) findViewById(R.id.enterOdometer);
-        EditText gradeText = (EditText) findViewById(R.id.enterGrade);
-        EditText amountText = (EditText) findViewById(R.id.enterAmount);
-        EditText costText = (EditText) findViewById(R.id.enterCost);
+        dateText = (EditText) findViewById(R.id.enterDate);
+        stationText = (EditText) findViewById(R.id.enterStation);
+        odometerText = (EditText) findViewById(R.id.enterOdometer);
+        gradeText = (EditText) findViewById(R.id.enterGrade);
+        amountText = (EditText) findViewById(R.id.enterAmount);
+        costText = (EditText) findViewById(R.id.enterCost);
 
         Button cancel  =  (Button) findViewById(R.id.cancelButton);
         Button finish = (Button) findViewById(R.id.finishButton);
@@ -43,37 +55,46 @@ public class AddLogEntry extends ActionBarActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
+            }
+        });
 
-                SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
-                String tempString = dateText.getText().toString();
-                try {
-                    tmpDate = dateFormat.parse(tempString);
-                }catch(ParseException e){}
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                tmpStation = stationText.getText().toString();
+                String tmpDate;
+                String tmpStation;
+                Integer tmpOdometer;
+                String tmpGrade;
+                Integer tmpAmount;
+                Integer tmpCost;
 
-                String tempodo = odometerText.getText().toString();
-                tmpOdometer = Integer.parseInt(tempodo);
+                Bundle extras = getIntent().getExtras();
+                String position = null;
+                if (extras != null){
+                    position = extras.getString("position");
+                }
 
-                tmpGrade = gradeText.getText().toString();
+                Intent dataRet = new Intent();
 
-                String tempamount = amountText.getText().toString();
-                tmpAmount = Integer.parseInt(tempamount);
-
-                String tempcost = costText.getText().toString();
-                tmpCost = Integer.parseInt(tempcost);
-
-                LogEntry entry = new LogEntry(tmpDate,tmpStation,tmpOdometer,tmpGrade,tmpAmount,tmpCost);
-
-
+                if(position != null){
+                    dataRet.putExtra("position", position);
+                }
+                dataRet.putExtra("date",dateText.getText().toString());
+                dataRet.putExtra("station",stationText.getText().toString());
+                dataRet.putExtra("odometer",odometerText.getText().toString());
+                dataRet.putExtra("grade",gradeText.getText().toString());
+                dataRet.putExtra("amount",amountText.getText().toString());
+                dataRet.putExtra("cost",costText.getText().toString());
+                setResult(RESULT_OK,dataRet);
+                finish();
 
             }
         });
-/*
-        if (savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
-        }
-*/
+
+
+
     }
 
     @Override
@@ -98,7 +119,10 @@ public class AddLogEntry extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    Intent intent = getIntent();
+
+
+
+
 
 
 

@@ -12,7 +12,7 @@
         android:text="Log Entries"
         android:textSize="20dp"/>
     <ListView
-        android:id="@+id/LogEntryList"
+        android:id="@+id/EntriesList"
         android:layout_width="fill_parent"
         android:layout_height="263dp"
         android:layout_weight="1"
@@ -26,7 +26,9 @@
         />
     <Button
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/totalCost"
+        android:text="Calculate Total Cost"/>
 
 
 </LinearLayout>

@@ -15,7 +15,6 @@
         android:layout_weight="1"
         android:id="@+id/enterDate"
         android:hint="Please Enter the Date- YYYY-MM-DD"
-        android:inputType="date"
         />
     <EditText
         android:layout_width="fill_parent"
@@ -30,6 +29,7 @@
         android:layout_weight="1"
         android:id="@+id/enterOdometer"
         android:hint="Please Enter the Odometer Reading"
+        android:inputType="number"
         />
     <EditText
         android:layout_width="fill_parent"
