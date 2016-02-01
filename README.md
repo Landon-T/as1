@@ -10,6 +10,8 @@ To update a log entry clikc it in the list and enter the values you would like t
 
 
 Video:
+https://youtu.be/e_I3rkAlI2w
+
 
 please note when entering non numeric values into the Odometer the keys are not entered even when pressed, this cannot be seen
 in the video. By using the android:inputType"numberDecimal" no characters other then numbers can be entered. and on the phone only the
