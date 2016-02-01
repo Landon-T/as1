@@ -1,5 +1,6 @@
 package com.school.landon.lthys_fueltrack;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -8,12 +9,12 @@ import java.util.Date;
 public class LogEntry extends Object {
     private String date;
     private String station;
-    private Integer odometer;
+    private Float odometer;
     private String grade;
-    private Integer amount;
+    private Float amount;
     private Float cost;
 
-    public LogEntry(String date, String station, Integer odometer, String grade,Integer amount, Float cost){
+    public LogEntry(String date, String station, Float odometer, String grade,Float amount, Float cost){
         this.date = date;
         this.station = station;
         this.odometer = odometer;
@@ -23,8 +24,14 @@ public class LogEntry extends Object {
 
     }
 
+    public static float round(float d, int decimalPlace) {
+        BigDecimal bd = new BigDecimal(Float.toString(d));
+        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        return bd.floatValue();
+    }
+
     public Float getTotalCost(){
-        return amount*(cost/100);
+        return round(amount*(cost/100),2);
     }
 
     public String getDate(){
@@ -35,16 +42,16 @@ public class LogEntry extends Object {
         return station;
     }
 
-    public  Integer getOdometer(){
+    public  Float getOdometer(){
         return odometer;
     }
 
     public void updateDate(String d){this.date = d;}
     public void updateStation(String s){this.station = s;}
-    public void updateOdometer(Integer i){this.odometer = i;}
+    public void updateOdometer(Float i){this.odometer = round(i,1);}
     public void updateGrade(String s){this.grade = s;}
-    public void updateAmount(Integer i){this.amount = i;}
-    public void updateCost(Float f){this.cost = f;}
+    public void updateAmount(Float i){this.amount = round(i,3);}
+    public void updateCost(Float f){this.cost = round(f,1);}
 
 
     @Override

@@ -53,8 +53,8 @@ public class MainLog extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Float sum = Float.parseFloat("0.0");
-                for(int i = 0; i < logEntries.size(); i++){
-                   sum += logEntries.get(i).getTotalCost();
+                for (int i = 0; i < logEntries.size(); i++) {
+                    sum += logEntries.get(i).getTotalCost();
                 }
                 Toast.makeText(v.getContext(), sum.toString(), Toast.LENGTH_LONG).show();
             }
@@ -75,7 +75,7 @@ public class MainLog extends ActionBarActivity {
                 Intent intent = new Intent(view.getContext(), AddLogEntry.class);
                 //intent.putExtra("position", position);
                 Position = position;
-                startActivityForResult(intent,REQUEST_CODE_UPDATE);
+                startActivityForResult(intent, REQUEST_CODE_UPDATE);
             }
         });
 
@@ -116,9 +116,9 @@ public class MainLog extends ActionBarActivity {
                 Integer position;
                 String tmpDate;
                 String tmpStation;
-                Integer tmpOdometer;
+                Float tmpOdometer;
                 String tmpGrade;
-                Integer tmpAmount;
+                Float tmpAmount;
                 Float tmpCost;
                 String x;
                 Boolean y  = dataRet.hasExtra("date");
@@ -142,8 +142,8 @@ public class MainLog extends ActionBarActivity {
 
                 if (dataRet.hasExtra("odometer")) {
                     x = dataRet.getStringExtra("odometer");
-                    tmpOdometer = Integer.parseInt(x);
-                }else{tmpOdometer = 0;}
+                    tmpOdometer = Float.parseFloat(x);
+                }else{tmpOdometer = Float.parseFloat("0.0");}
 
                 if (dataRet.hasExtra("grade")) {
                     tmpGrade = dataRet.getStringExtra("grade");
@@ -151,8 +151,8 @@ public class MainLog extends ActionBarActivity {
 
                 if (dataRet.hasExtra("amount")) {
                     x = dataRet.getStringExtra("amount");
-                    tmpAmount = Integer.parseInt(x);
-                }else{tmpAmount = 0;}
+                    tmpAmount = Float.parseFloat(x);
+                }else{tmpAmount = Float.parseFloat("0.0");}
 
                 if(dataRet.hasExtra("cost")) {
                     x = dataRet.getStringExtra("cost");
@@ -171,9 +171,9 @@ public class MainLog extends ActionBarActivity {
             if (resultCode == RESULT_OK){
                 String tmpDate;
                 String tmpStation;
-                Integer tmpOdometer;
+                Float tmpOdometer;
                 String tmpGrade;
-                Integer tmpAmount;
+                Float tmpAmount;
                 Float tmpCost;
                 String x;
 
@@ -190,7 +190,7 @@ public class MainLog extends ActionBarActivity {
                 }
                 if (dataRet.hasExtra("odometer")) {
                     if (dataRet.getStringExtra("odometer").length() != 0) {
-                        logEntries.get(Position).updateOdometer(Integer.parseInt(dataRet.getStringExtra("odometer")));
+                        logEntries.get(Position).updateOdometer(Float.parseFloat(dataRet.getStringExtra("odometer")));
                     }
                 }
                 if (dataRet.hasExtra("grade")) {
@@ -200,7 +200,7 @@ public class MainLog extends ActionBarActivity {
                 }
                 if (dataRet.hasExtra("amount")) {
                     if (dataRet.getStringExtra("amount").length() != 0) {
-                        logEntries.get(Position).updateAmount(Integer.parseInt(dataRet.getStringExtra("amount")));
+                        logEntries.get(Position).updateAmount(Float.parseFloat(dataRet.getStringExtra("amount")));
                     }
                 }
                 if (dataRet.hasExtra("cost")) {

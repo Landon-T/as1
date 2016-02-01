@@ -29,7 +29,7 @@
         android:layout_weight="1"
         android:id="@+id/enterOdometer"
         android:hint="Please Enter the Odometer Reading"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         />
     <EditText
         android:layout_width="fill_parent"
@@ -44,7 +44,7 @@
         android:layout_weight="1"
         android:id="@+id/enterAmount"
         android:hint="Enter the Fuel Amount"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         />
     <EditText
         android:layout_width="fill_parent"
